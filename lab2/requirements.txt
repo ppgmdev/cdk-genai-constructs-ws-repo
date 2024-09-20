@@ -1,6 +1,3 @@
-bedrock-agent
-boto3
-pandas
-cdklabs.generative-ai-cdk-constructs
-aws-cdk.aws-lambda-python-alpha
-botocore
+aws-cdk-lib==2.133.0
+constructs>=10.0.0,<11.0.0
+cdklabs.generative_ai_cdk_constructs
