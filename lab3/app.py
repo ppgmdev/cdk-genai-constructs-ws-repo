@@ -22,6 +22,20 @@ from agent_instruction_generator import analyze_csv_files,generate_instruction,i
 from Prep_Data import prep_data
 
 class MyStack(Stack):
-    #Start here (Step 0)
+    def __init__(self, scope: App, id: str,zip_file_name: str, region: str, **kwargs):
+        super().__init__(scope, id, **kwargs)
+
+        account_id = cdk.Stack.of(self).account
+        data_folder_name=zip_file_name.replace('.zip','')
+        agent_name = f"agent_{data_folder_name.lower()}"
+        suffix = f"{region}-{account_id}-{agent_name.lower()}"
+        lambda_role_name = f'{agent_name}-lambda-role-{suffix}'
+        agent_role_name = f'AmazonBedrockExecutionRoleForAgents_{suffix}'
+        lambda_name = f'{agent_name}-{suffix}'
+        foundation_model = BedrockFoundationModel('anthropic.claude-3-sonnet-20240229-v1:0', supports_agents=True)
+        prep_data(data_folder_name)
+        glue_database_name = f"{data_folder_name.lower()}"
+
+        #Start here (Step 0)
 
 #CDK app definition here (Step 4)
