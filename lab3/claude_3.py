@@ -16,7 +16,7 @@ def invoke_claude_3_with_text(prompt):
         :return: Inference response from the model.
         """
 
-        client = boto3.client(service_name="bedrock-runtime", region_name="us-east-1")
+        client = boto3.client(service_name="bedrock-runtime", region_name="us-west-2")
 
         # Invoke Claude 3 with the text prompt
         model_id = "anthropic.claude-3-sonnet-20240229-v1:0"
@@ -87,7 +87,7 @@ class Claude3Wrapper:
 
         # Initialize the Amazon Bedrock runtime client
         client = self.client or boto3.client(
-            service_name="bedrock-runtime", region_name="us-east-1"
+            service_name="bedrock-runtime", region_name="us-west-2"
         )
 
         # Invoke Claude 3 with the text prompt
@@ -150,7 +150,7 @@ class Claude3Wrapper:
 
         # Initialize the Amazon Bedrock runtime client
         client = self.client or boto3.client(
-            service_name="bedrock-runtime", region_name="us-east-1"
+            service_name="bedrock-runtime", region_name="us-west-2"
         )
 
         # Invoke the model with the prompt and the encoded image
